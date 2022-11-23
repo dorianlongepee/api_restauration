@@ -34,3 +34,5 @@ Puis, lancer le serveur mongodb + la compilation des fichiers typescript
 supervisor app
 sh compile.sh
 ```
+
+L'api est désormais fonctionnelle et peut être visualisée via [Swagger](http://localhost:3000/docs)
