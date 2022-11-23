@@ -39,8 +39,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var controllerAliment_1 = require("./controller/controllerAliment");
 var controllerPlats_1 = require("./controller/controllerPlats");
 var controllerUsers_1 = require("./controller/controllerUsers");
+var swagger_1 = require("./swagger");
 var mongoose = require('mongoose');
 var express = require('express');
+var swaggerJSDoc = require('swagger-jsdoc');
+var swaggerUi = require('swagger-ui-express');
 /**
  * On créé une nouvelle "application" express
  */
@@ -52,6 +55,12 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+var options = {
+    swaggerDefinition: swagger_1.swaggerDefinition,
+    apis: ['./*.js', './controller/*.js']
+};
+var swaggerSpec = swaggerJSDoc(options);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 /**
  * On dit à Express que l'on souhaite parser le body des requêtes en JSON
  *

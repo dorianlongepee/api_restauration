@@ -1,9 +1,13 @@
 import { ControllerAliment } from './controller/controllerAliment';
 import { ControllerPlats } from './controller/controllerPlats';
 import { ControllerUsers } from "./controller/controllerUsers";
+import { swaggerDefinition } from "./swagger";
 
 const mongoose = require('mongoose');
 const express = require('express');
+
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 /**
  * On créé une nouvelle "application" express
@@ -25,6 +29,15 @@ app.use((req, res, next) => {
 
   next();
 });
+
+const options = {
+  swaggerDefinition,
+  apis: ['./*.js', './controller/*.js']
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+
 
 /**
  * On dit à Express que l'on souhaite parser le body des requêtes en JSON

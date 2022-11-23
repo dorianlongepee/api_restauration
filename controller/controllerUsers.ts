@@ -27,6 +27,9 @@ export class ControllerUsers{
                             }
                             res.status(200).json({
                                 userId: user._id,
+                                nom:user.nom,
+                                prenom:user.prenom,
+                                admin: user.admin,
                                 accessToken: jwt.sign(
                                     {userId: user._id},
                                     "SCHEMA_TOKEN",

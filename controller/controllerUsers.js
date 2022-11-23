@@ -80,6 +80,9 @@ var ControllerUsers = /** @class */ (function () {
                                     }
                                     res.status(200).json({
                                         userId: user._id,
+                                        nom: user.nom,
+                                        prenom: user.prenom,
+                                        admin: user.admin,
                                         accessToken: jsonwebtoken_1.default.sign({ userId: user._id }, "SCHEMA_TOKEN", { expiresIn: "24h" })
                                     });
                                 })
