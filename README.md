@@ -12,6 +12,7 @@ J'aurais aimé un peu plus de temps afin d'ajouter certaines fonctionnalités co
 - Stockage cookie/localStorage utilisateur
 - CRUD graphique pour les admins
 - Panier + commande
+- Gestion stock
 
 # Lancer le projet
 Commencer par cloner le repository
