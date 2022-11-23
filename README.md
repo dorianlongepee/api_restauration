@@ -1,5 +1,5 @@
 # API RESTful pour une WebApp de restauration
-J'aurais aimé un peu plus de temps afin d'ajouter certaines fonctionnalités comme je suis arrivé plus tard que le reste de la promotion mais voici un état des lieux pour respecter la deadline 🙂 
+Voici mon rendu pour ce projet, ci-dessous vous trouverez la liste de ce que j'ai réussi à produire dans le temps imparti et ce que j'aurais souhaité ajouter si le temps me l'avait permis car malheureusement arrivé un peu plus tard que le reste de la promotion dans la formation. Le temps perdu m'aura été quelque peu préjudiciable comme vous pourrez le constater, j'espère malgré tout que le code ayant été fait saura répondre aux attentes et vous souhaite bonne réception.
 
 ## Fait
 - Affichage des plats et des aliments
