@@ -95,7 +95,7 @@ var ControllerPlats = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         res.status(201);
-                        res.send();
+                        res.send("Plat créé");
                         return [2 /*return*/];
                 }
             });
@@ -111,8 +111,8 @@ var ControllerPlats = /** @class */ (function () {
                         return [4 /*yield*/, plats_1.Plat.removePlat(platId)];
                     case 1:
                         _a.sent();
-                        res.status(204);
-                        res.send();
+                        res.status(200);
+                        res.send("Plat supprimé");
                         return [2 /*return*/];
                 }
             });
@@ -129,8 +129,8 @@ var ControllerPlats = /** @class */ (function () {
                         return [4 /*yield*/, plats_1.Plat.updatePlat(platId, detailsToUpdate)];
                     case 1:
                         _a.sent();
-                        res.status(204);
-                        res.send();
+                        res.status(200);
+                        res.send("Plat mis à jour");
                         return [2 /*return*/];
                 }
             });

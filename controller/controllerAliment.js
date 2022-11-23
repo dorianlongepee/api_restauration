@@ -95,7 +95,7 @@ var ControllerAliment = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         res.status(201);
-                        res.send();
+                        res.send("Aliment créé");
                         return [2 /*return*/];
                 }
             });
@@ -111,8 +111,8 @@ var ControllerAliment = /** @class */ (function () {
                         return [4 /*yield*/, aliments_1.Aliment.removeAliment(alimentId)];
                     case 1:
                         _a.sent();
-                        res.status(204);
-                        res.send();
+                        res.status(200);
+                        res.send("Aliment correctement supprimé");
                         return [2 /*return*/];
                 }
             });
@@ -129,8 +129,8 @@ var ControllerAliment = /** @class */ (function () {
                         return [4 /*yield*/, aliments_1.Aliment.updateAliment(alimentId, detailsToUpdate)];
                     case 1:
                         _a.sent();
-                        res.status(204);
-                        res.send();
+                        res.status(200);
+                        res.send("Aliment mis à jour");
                         return [2 /*return*/];
                 }
             });

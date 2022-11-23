@@ -52,7 +52,7 @@ var ControllerUsers = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, bcrypt_1.default.hash(req.body.password, 10)
                             .then(function (hash) {
-                            users_1.User.insertUser(req.body.mail, hash)
+                            users_1.User.insertUser(req.body, hash)
                                 .then(function () { return res.status(201).json({ message: 'Utilisateur créé !' }); })
                                 .catch(function (error) { return res.status(400).json({ error: error }); });
                         })
@@ -78,12 +78,10 @@ var ControllerUsers = /** @class */ (function () {
                                     if (!valid) {
                                         res.status(401).json({ message: "Couple mail/mot de passe incorrect" });
                                     }
-                                    else {
-                                        res.status(200).json({
-                                            userId: user._id,
-                                            token: jsonwebtoken_1.default.sign({ userId: user._id }, "SCHEMA_TOKEN", { expiresIn: "24h" })
-                                        });
-                                    }
+                                    res.status(200).json({
+                                        userId: user._id,
+                                        accessToken: jsonwebtoken_1.default.sign({ userId: user._id }, "SCHEMA_TOKEN", { expiresIn: "24h" })
+                                    });
                                 })
                                     .catch(function (error) { return res.status(500).json({ error: error }); });
                             }

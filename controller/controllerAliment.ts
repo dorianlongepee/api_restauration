@@ -21,22 +21,22 @@ export class ControllerAliment {
   public static async insertAliment(req, res){
     await Aliment.insertAliment(req.body)
     res.status(201)
-    res.send()
+    res.send("Aliment créé")
   }
 
   public static async removeAliment(req, res){
     let alimentId: any = req.params.id
     await Aliment.removeAliment(alimentId)
-    res.status(204)
-    res.send()
+    res.status(200)
+    res.send("Aliment correctement supprimé")
   }
 
   public static async updateAliment(req, res){
     let alimentId: any = req.params.id
     let detailsToUpdate: any = req.body
     await Aliment.updateAliment(alimentId, detailsToUpdate)
-    res.status(204)
-    res.send()
+    res.status(200)
+    res.send("Aliment mis à jour")
   }
 
 

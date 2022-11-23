@@ -1,6 +1,4 @@
 import mongoose, {Schema} from "mongoose";
-import bcrypt from 'bcrypt'
-
 
 const userSchema = new Schema({
     mail: {
@@ -11,16 +9,32 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    nom: {
+        type: String,
+        required: true
+    },
+    prenom: {
+        type: String,
+        required: true
+    },
+    admin: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 })
 
 const UserModel = mongoose.model("User", userSchema);
 
 export class User {
-    public static async insertUser(mail, hash) {
+    public static async insertUser(body, hash) {
         const user = new UserModel({
-            mail: mail,
-            password: hash
+            mail: body.mail,
+            password: hash,
+            nom: body.nom,
+            prenom: body.prenom,
+            admin: body.admin
         })
         return await user.save()
     }

@@ -70,21 +70,37 @@ var userSchema = new mongoose_1.Schema({
     password: {
         type: String,
         required: true
+    },
+    nom: {
+        type: String,
+        required: true
+    },
+    prenom: {
+        type: String,
+        required: true
+    },
+    admin: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 });
 var UserModel = mongoose_1.default.model("User", userSchema);
 var User = /** @class */ (function () {
     function User() {
     }
-    User.insertUser = function (mail, hash) {
+    User.insertUser = function (body, hash) {
         return __awaiter(this, void 0, void 0, function () {
             var user;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         user = new UserModel({
-                            mail: mail,
-                            password: hash
+                            mail: body.mail,
+                            password: hash,
+                            nom: body.nom,
+                            prenom: body.prenom,
+                            admin: body.admin
                         });
                         return [4 /*yield*/, user.save()];
                     case 1: return [2 /*return*/, _a.sent()];

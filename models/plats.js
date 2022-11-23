@@ -61,11 +61,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Plat = void 0;
 var mongoose_1 = __importStar(require("mongoose"));
+var ObjectId = mongoose_1.Schema.Types.ObjectId;
 var platSchema = new mongoose_1.Schema({
     nom: String,
     type: String,
-    aliments: Array,
+    aliments: [
+        {
+            _id: {
+                type: ObjectId,
+                ref: 'Aliment'
+            },
+            nom: String,
+            quantite: Number,
+        }
+    ],
     prix: Number,
+    disponible: Boolean,
+    image: String
 });
 var PlatModel = mongoose_1.default.model("Plat", platSchema);
 var Plat = /** @class */ (function () {
@@ -140,6 +152,8 @@ var Plat = /** @class */ (function () {
                             type: body.type,
                             aliments: body.aliments,
                             prix: body.prix,
+                            disponible: body.disponible,
+                            image: body.image
                         });
                         return [4 /*yield*/, plat.save()];
                     case 1: return [2 /*return*/, _a.sent()];

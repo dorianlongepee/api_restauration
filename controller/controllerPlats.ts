@@ -21,21 +21,21 @@ export class ControllerPlats {
     public static async insertPlat(req, res){
         await Plat.insertPlat(req.body)
         res.status(201)
-        res.send()
+        res.send("Plat créé")
     }
 
     public static async removePlat(req, res){
         let platId: any = req.params.id
         await Plat.removePlat(platId)
-        res.status(204)
-        res.send()
+        res.status(200)
+        res.send("Plat supprimé")
     }
 
     public static async updatePlat(req, res){
         let platId: any = req.params.id
         let detailsToUpdate: any = req.body
         await Plat.updatePlat(platId, detailsToUpdate)
-        res.status(204)
-        res.send()
+        res.status(200)
+        res.send("Plat mis à jour")
       }
 }

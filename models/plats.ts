@@ -1,10 +1,24 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, {Schema, Types} from "mongoose";
+import {Aliment} from "./aliments";
+const ObjectId = Schema.Types.ObjectId
+
 
 const platSchema = new Schema({
     nom: String,
     type: String,
-    aliments: Array,
+    aliments: [
+        {
+            _id : {
+                type: ObjectId,
+                ref: 'Aliment'
+            },
+            nom : String,
+            quantite : Number,
+        }
+    ],
     prix: Number,
+    disponible: Boolean,
+    image: String
 })
 const PlatModel = mongoose.model("Plat", platSchema);
 
@@ -32,17 +46,22 @@ export class Plat {
     public static async insertPlat(body: {
         nom: string,
         type: string,
-        aliments: {
-            nom: string
-            quantite: number
-        }[],
+        aliments: [{
+            _id : string,
+            nom : string,
+            quantite : number
+        }],
         prix: number,
+        disponible: boolean,
+        image: string
     }){
         const plat = new PlatModel({
             nom: body.nom,
             type: body.type,
             aliments: body.aliments,
             prix: body.prix,
+            disponible: body.disponible,
+            image: body.image
         })
     
     return await plat.save()
@@ -59,8 +78,10 @@ export class Plat {
         body: {
           nom: string,
           type: string,
-          aliments: {nom: string, quantite:number}[],
+          aliments: {_id: string, nom: string, quantite: number}[],
           prix: number,
+          disponible: boolean,
+            image: string
         }
       ): Promise<any> {
         return new Promise(async (resolve) => {

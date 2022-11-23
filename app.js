@@ -59,10 +59,10 @@ app.use(function (req, res, next) {
  */
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// Aliments
 app.get('/', function (req, res) { return res.send('🏠👌'); });
+// Aliments
 app.get('/aliments', function (req, res) { return controllerAliment_1.ControllerAliment.getAliments(req, res); });
-app.get('/aliments/:id', function (req, res) { return controllerAliment_1.ControllerAliment.getOneAliments(req, res); });
+app.get('/aliments/:id', function (req, res) { controllerAliment_1.ControllerAliment.getOneAliments(req, res); });
 app.get('/aliments/types/:type', function (req, res) { return controllerAliment_1.ControllerAliment.getAlimentsFromType(req, res); });
 app.post('/aliments', function (req, res) { return controllerAliment_1.ControllerAliment.insertAliment(req, res); });
 app.put('/aliments/:id', function (req, res) { return controllerAliment_1.ControllerAliment.updateAliment(req, res); });
@@ -87,7 +87,7 @@ function main() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, mongoose.connect('mongodb://localhost/Gestion_stock')];
+                    return [4 /*yield*/, mongoose.connect('mongodb://localhost/restauration')];
                 case 1:
                     _a.sent();
                     console.log('Connection mongodb ok');
